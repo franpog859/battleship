@@ -1,6 +1,10 @@
 #include "utils.h"
 #include <stdio.h>
 
-void printHelp() {
-	printf("help");
+void printHelpWithParams() {
+	printf("help with params");
+}
+
+void printHelpWithMove() {
+	printf("help with move");
 }

@@ -1,7 +1,9 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-void printHelp();
+void printHelpWithParams();
+
+void printHelpWithMove();
 
 #endif // !UTILS_H
 

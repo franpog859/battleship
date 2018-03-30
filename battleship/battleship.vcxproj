@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\app\gameBoardManager.c" />
+    <ClCompile Include="..\app\gameManager.c" />
     <ClCompile Include="..\app\main.c" />
     <ClCompile Include="..\app\parameters.c" />
     <ClCompile Include="..\app\utils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\app\gameBoardManager.h" />
+    <ClInclude Include="..\app\gameManager.h" />
     <ClInclude Include="..\app\parameters.h" />
     <ClInclude Include="..\app\utils.h" />
   </ItemGroup>
