@@ -5,7 +5,7 @@
 void prepareAndPlay(Parameters* params) {
 	GameBoard* gameBoard = malloc(sizeof(GameBoard));
 	if (isGameLoaded(params)) {
-		loadGame(gameBoard);
+		//loadGame(gameBoard);
 	}
 	else {
 		setPlayersGameBoards(gameBoard);
