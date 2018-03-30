@@ -10,5 +10,7 @@ void prepareAndPlay(Parameters* params) {
 	else {
 		setPlayersGameBoards(gameBoard);
 	}
+	//while loop with turns
+
 	freeGameBoard(gameBoard);
 }

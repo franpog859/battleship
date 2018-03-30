@@ -5,5 +5,5 @@
 
 void prepareAndPlay(Parameters* params);
 
-#endif // !GAMEMANAGER_H
+#endif 
 

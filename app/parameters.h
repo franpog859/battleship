@@ -15,7 +15,9 @@ void initializeParameters(Parameters* params);
 
 bool areParametersOk(Parameters* params);
 
+bool isGameLoaded(Parameters* params);
+
 void freeParameters(Parameters* params);
 
-#endif // !PARAMETERS_H
+#endif
 

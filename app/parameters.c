@@ -43,6 +43,10 @@ bool areParametersOk(Parameters* params) {
 	return !(params->help);
 }
 
+bool isGameLoaded(Parameters* params) {
+	return params->load;
+}
+
 void freeParameters(Parameters* params) {
 	free(params);
 }
