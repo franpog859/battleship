@@ -20,6 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app\main.c" />
+    <ClCompile Include="..\app\parameters.c" />
+    <ClCompile Include="..\app\utils.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\app\parameters.h" />
+    <ClInclude Include="..\app\utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
