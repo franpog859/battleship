@@ -1,20 +1,80 @@
 #include "gameBoardManager.h"
 #include "utils.h"
 #include <stdbool.h>
+#include <stdio.h>
 
-void setPlayersGameBoards(GameBoard* gameBoard) {
+void setStartigGameBoard(GameBoard* gameBoard) {
 	initializeGameBoard(gameBoard);
-	//Set each game board.
+	for (int whichPlayer = 0; whichPlayer < numberOfPlayers; whichPlayer++) {
+		setPlayersBoard(gameBoard, whichPlayer);
+	}
 }
 
 void initializeGameBoard(GameBoard* gameBoard) {
 	gameBoard->firstPlayerMove = true;
+	gameBoard->numberOfTurn = 1;
 	for (int i = 0; i < numberOfPlayers; i++) {
 		for (int j = 0; j < boardSize; j++) {
 			for (int k = 0; k < boardSize; k++) {
-				gameBoard->board[i][j][k] = EMPTY;
+				gameBoard->ownBoard[i][j][k] = EMPTY;
+				gameBoard->oponentBoard[i][j][k] = EMPTY;
 			}
 		}
+	}
+}
+
+void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
+	Location* newLocation = malloc(sizeof(Location));
+	for (int i = 0; i < numberOfShips; i++) {
+		clearTerminal();
+		printGameBoard(gameBoard->ownBoard, whichPlayer);
+		chooseShipLocation(gameBoard, whichPlayer, newLocation);
+		setShipLocation(gameBoard, whichPlayer, newLocation);
+	}
+	free(newLocation);
+}
+
+void chooseShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation) {
+	do {
+		initializeLocation(newLocation);
+		printf("\nType a location (e.g.: C8) for your new ship: ");
+		scanf_s("%c", &newLocation->col);
+		scanf_s("%d", &newLocation->row);
+		newLocation->col = castColAsInt(newLocation->col);
+		getchar();
+	} while (!isLocationOk());
+}
+
+void initializeLocation(Location* location) {
+	location->col = 0;
+	location->row = 0;
+}
+
+int castColAsInt(int col) {
+	if (col < 'a') {
+		return col - 'A';
+	}
+	else {
+		return col - 'a';
+	}
+}
+
+bool isLocationOk() { //TODO Take care of all cases.
+	return true;
+}
+
+void setShipLocation(GameBoard* gameBoard, int whichPlayer, Location* location) {
+	gameBoard->ownBoard[whichPlayer][location->row][location->col] = SHIP;
+}
+
+void printGameBoard(char board[2][10][10], int whichPlayer) {
+	printf("   A B C D E F G H I J\n\n");
+	for (int i = 0; i < boardSize; i++) {
+		printf("%d  ", i);
+		for (int j = 0; j < boardSize; j++) {
+			printf("%c ", board[whichPlayer][i][j]);
+		}
+		printf("\n");
 	}
 }
 

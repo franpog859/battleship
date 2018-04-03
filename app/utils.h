@@ -5,5 +5,7 @@ void printHelpWithParams();
 
 void printHelpWithMove();
 
+void clearTerminal();
+
 #endif 
 

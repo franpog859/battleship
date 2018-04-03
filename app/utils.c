@@ -8,3 +8,7 @@ void printHelpWithParams() {
 void printHelpWithMove() {
 	printf("help with move");
 }
+
+void clearTerminal() {
+	system("cls");
+}
