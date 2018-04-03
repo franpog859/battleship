@@ -23,23 +23,25 @@ typedef struct GameBoard {
 	int numberOfTurn;
 } GameBoard;
 
-void setStartigGameBoard(GameBoard* gameBoard);
+void setStartingGameBoard(GameBoard* gameBoard);
 
 void initializeGameBoard(GameBoard* gameBoard);
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer);
 
+void printGameBoard(char board[2][10][10], int whichPlayer);
+
 void chooseShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
 
 void initializeLocation(Location* location);
+
+void getNewLocation(Location* newLocation);
 
 int castColAsInt(int col);
 
 bool isLocationOk();
 
 void setShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
-
-void printGameBoard(char board[2][10][10], int whichPlayer);
 
 void freeGameBoard(GameBoard* gameBoard);
 

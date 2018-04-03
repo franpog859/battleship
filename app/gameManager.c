@@ -19,6 +19,6 @@ void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
 		//loadGame(gameBoard);
 	}
 	else {
-		setStartigGameBoard(gameBoard);
+		setStartingGameBoard(gameBoard);
 	}
 }
