@@ -1,6 +1,7 @@
 #include "gameManager.h"
 #include "parameters.h"
 #include "gameBoardManager.h"
+#include "gameBoard.h"
 
 void prepareAndPlay(Parameters* params) {
 	GameBoard* gameBoard = malloc(sizeof(GameBoard));
@@ -11,7 +12,7 @@ void prepareAndPlay(Parameters* params) {
 	//	doTheTurn(gameBoard);
 	//}
 	//publicWinner(gameBoard);
-	freeGameBoard(gameBoard);
+	free(gameBoard);
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {

@@ -3,6 +3,7 @@
 
 #include "parameters.h"
 #include "gameBoardManager.h"
+#include "gameBoard.h"
 
 void prepareAndPlay(Parameters* params);
 

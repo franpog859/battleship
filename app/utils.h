@@ -7,5 +7,7 @@ void printHelpWithMove();
 
 void clearTerminal();
 
+void clearBuffer();
+
 #endif 
 

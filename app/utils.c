@@ -12,3 +12,8 @@ void printHelpWithMove() {
 void clearTerminal() {
 	system("cls");
 }
+
+void clearBuffer()
+{
+	while (getchar() != '\n');
+}

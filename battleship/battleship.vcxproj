@@ -21,14 +21,19 @@
   <ItemGroup>
     <ClCompile Include="..\app\gameBoardManager.c" />
     <ClCompile Include="..\app\gameManager.c" />
+    <ClCompile Include="..\app\inputChecker.c" />
     <ClCompile Include="..\app\main.c" />
     <ClCompile Include="..\app\parameters.c" />
+    <ClCompile Include="..\app\startingBoardSetter.c" />
     <ClCompile Include="..\app\utils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\app\gameBoard.h" />
     <ClInclude Include="..\app\gameBoardManager.h" />
     <ClInclude Include="..\app\gameManager.h" />
+    <ClInclude Include="..\app\inputChecker.h" />
     <ClInclude Include="..\app\parameters.h" />
+    <ClInclude Include="..\app\startingBoardSetter.h" />
     <ClInclude Include="..\app\utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
