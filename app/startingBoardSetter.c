@@ -39,7 +39,7 @@ void getNewShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLoca
 	do {
 		initializeLocation(newLocation);
 		getNewLocation(newLocation);
-	} while (!isLocationValid(gameBoard, whichPlayer, newLocation));
+	} while (!isLocationValid(gameBoard->ownBoard, whichPlayer, newLocation));
 }
 
 void setOwnShipLocation(GameBoard* gameBoard, int whichPlayer, Location* location) {

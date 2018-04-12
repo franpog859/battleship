@@ -15,6 +15,6 @@ void getNewLocation(Location* newLocation);
 
 int castColAsInt(int col);
 
-bool isLocationValid(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
+bool isLocationValid(char board[2][10][10], int whichPlayer, Location* newLocation);
 
 #endif
