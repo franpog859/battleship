@@ -13,9 +13,7 @@ void setPlayersBoard(GameBoard* gameBoard, int whichPlayer);
 
 void getNewShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
 
-void initializeLocation(Location* location);
-
-void setShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
+void setOwnShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
 
 #endif
 

@@ -30,7 +30,7 @@ void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
 		getNewShipLocation(gameBoard, whichPlayer, newLocation);
-		setShipLocation(gameBoard, whichPlayer, newLocation);
+		setOwnShipLocation(gameBoard, whichPlayer, newLocation);
 	}
 	free(newLocation);
 }
@@ -39,14 +39,9 @@ void getNewShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLoca
 	do {
 		initializeLocation(newLocation);
 		getNewLocation(newLocation);
-	} while (!isLocationOk(gameBoard, whichPlayer, newLocation));
+	} while (!isLocationValid(gameBoard, whichPlayer, newLocation));
 }
 
-void initializeLocation(Location* location) {
-	location->col = -1;
-	location->row = -1;
-}
-
-void setShipLocation(GameBoard* gameBoard, int whichPlayer, Location* location) {
+void setOwnShipLocation(GameBoard* gameBoard, int whichPlayer, Location* location) {
 	gameBoard->ownBoard[whichPlayer][location->row][location->col] = OWN_SHIP;
 }

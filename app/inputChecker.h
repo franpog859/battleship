@@ -9,10 +9,12 @@ typedef struct Location {
 	int row;
 } Location;
 
+void initializeLocation(Location* location);
+
 void getNewLocation(Location* newLocation);
 
 int castColAsInt(int col);
 
-bool isLocationOk(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
+bool isLocationValid(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
 
 #endif
