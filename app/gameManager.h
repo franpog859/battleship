@@ -14,6 +14,8 @@ bool isGameOn(GameBoard* gameBoard);
 
 void doTheTurn(GameBoard* gameBoard);
 
+void changeActivePlayer(GameBoard* gameBoard);
+
 void publicWinner(GameBoard* gameBoard);
 
 int getWinner(GameBoard* gameBoard);

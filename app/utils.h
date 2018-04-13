@@ -11,5 +11,7 @@ void clearBuffer();
 
 void pause();
 
+void printWinner(int winner);
+
 #endif 
 

@@ -21,3 +21,7 @@ void pause() {
 	printf("\nPress enter to continue...\n");
 	getchar();
 }
+
+void printWinner(int winner) {
+	printf("The winner is player %d!", winner);
+}

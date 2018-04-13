@@ -27,30 +27,34 @@ void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
 }
 
 bool isGameOn(GameBoard* gameBoard) {
-	for (int i = 0; i < numberOfPlayers; i++) {
-		if (gameBoard->pointsCounter[i] == numberOfShips) {
-			return false;
-		}
+	int lastTurnPlayer = gameBoard->activePlayer;
+	if (gameBoard->pointsCounter[lastTurnPlayer] == numberOfShips) {
+		return false;
 	}
 	return true;
 }
 
-void doTheTurn(GameBoard* gameBoard) {
-	return; //TODO
+void doTheTurn(GameBoard* gameBoard) { 
+	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
+	//TODO
+}
+
+void changeActivePlayer(GameBoard* gameBoard) {
+	if (gameBoard->activePlayer == 0) {
+		gameBoard->activePlayer = 1;
+	}
+	else {
+		gameBoard->activePlayer = 0;
+	}
 }
 
 void publicWinner(GameBoard* gameBoard) {
 	int winner = getWinner(gameBoard);
 	clearTerminal();
-	printf("The winner is player %d!", winner);
+	printWinner(winner);
 	pause();
 }
 
-int getWinner(GameBoard* gameBoard) {
-	for (int i = 0; i < numberOfPlayers; i++) {
-		if (gameBoard->pointsCounter[i] == numberOfShips) {
-			return i;
-		}
-	}
-	return -1; //If something went wrong.
+int getWinner(GameBoard* gameBoard) { 
+	return gameBoard->activePlayer;
 }

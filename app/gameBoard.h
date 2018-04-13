@@ -18,7 +18,7 @@
 typedef struct GameBoard {
 	char ownBoard[2][10][10]; //Two boards 10 x 10, one for each player. It's player's board.
 	char oponentBoard[2][10][10]; //Two boards 10 x 10, one for each player. It's the oponent's view of the board.
-	bool firstPlayerMove;
+	int activePlayer;
 	int numberOfTurns;
 	int pointsCounter[2]; //Two counters for wach player.
 } GameBoard;
