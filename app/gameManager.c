@@ -36,7 +36,7 @@ bool isGameOn(GameBoard* gameBoard) {
 }
 
 void doTheTurn(GameBoard* gameBoard) {
-	//TODO
+	return; //TODO
 }
 
 void publicWinner(GameBoard* gameBoard) {
