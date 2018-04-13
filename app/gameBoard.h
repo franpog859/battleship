@@ -23,6 +23,8 @@ typedef struct GameBoard {
 	int pointsCounter[2]; //Two counters for wach player.
 } GameBoard;
 
+void printBoard(char board[numberOfPlayers][boardSize][boardSize], int whichPlayer);
+
 #endif
 
 

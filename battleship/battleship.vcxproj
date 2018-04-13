@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\app\gameBoardManager.c" />
+    <ClCompile Include="..\app\gameBoard.c" />
     <ClCompile Include="..\app\gameManager.c" />
     <ClCompile Include="..\app\inputChecker.c" />
     <ClCompile Include="..\app\main.c" />
@@ -29,7 +29,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app\gameBoard.h" />
-    <ClInclude Include="..\app\gameBoardManager.h" />
     <ClInclude Include="..\app\gameManager.h" />
     <ClInclude Include="..\app\inputChecker.h" />
     <ClInclude Include="..\app\parameters.h" />

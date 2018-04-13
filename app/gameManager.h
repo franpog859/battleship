@@ -2,7 +2,6 @@
 #define GAMEMANAGER_H
 
 #include "parameters.h"
-#include "gameBoardManager.h"
 #include "gameBoard.h"
 #include "inputChecker.h"
 #include <stdbool.h>
@@ -26,6 +25,8 @@ void setMove(GameBoard* gameBoard, Location* moveLocation);
 void setMissingMove(GameBoard* gameBoard, Location* location);
 
 void setKillingMove(GameBoard* gameBoard, Location* location);
+
+bool isEntirelyKilled(GameBoard* gameBoard, Location* location);
 
 void increasePlayersPoints(GameBoard* gameBoard);
 

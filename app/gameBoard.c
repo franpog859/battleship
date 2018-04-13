@@ -1,9 +1,7 @@
-#include "gameBoardManager.h"
-#include "utils.h"
 #include "gameBoard.h"
 #include <stdio.h>
 
-void printBoard(char board[2][10][10], int whichPlayer) {
+void printBoard(char board[numberOfPlayers][boardSize][boardSize], int whichPlayer) {
 	printf("The board of %d. player:\n\n", whichPlayer);
 	printf("   A B C D E F G H I J\n\n");
 	for (int i = 0; i < boardSize; i++) {

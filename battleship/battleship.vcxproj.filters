@@ -27,13 +27,13 @@
     <ClCompile Include="..\app\gameManager.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\app\gameBoardManager.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\app\startingBoardSetter.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="..\app\inputChecker.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\app\gameBoard.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\app\gameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\app\gameBoardManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\app\gameBoard.h">

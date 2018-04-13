@@ -1,7 +1,6 @@
 #include "startingBoardSetter.h"
 #include "gameBoard.h"
 #include "inputChecker.h"
-#include "gameBoardManager.h"
 #include "utils.h"
 #include <stdio.h>
 

@@ -1,6 +1,5 @@
 #include "gameManager.h"
 #include "parameters.h"
-#include "gameBoardManager.h"
 #include "gameBoard.h"
 #include "utils.h"
 #include "inputChecker.h"
@@ -86,9 +85,19 @@ void setMissingMove(GameBoard* gameBoard, Location* location) {
 }
 
 void setKillingMove(GameBoard* gameBoard, Location* location) {
-	//TODO: If ship is not entirely killet it should be NOT_KILLED_SHIP.
-	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
+	if (isEntirelyKilled(gameBoard, location)) {
+		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
+	}
+	else {
+		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;
+	}
+	
 	increasePlayersPoints(gameBoard);
+}
+
+bool isEntirelyKilled(GameBoard* gameBoard, Location* location) {
+	//TODO: If ship is not entirely killed it should be NOT_KILLED_SHIP.
+	return true;
 }
 
 void increasePlayersPoints(GameBoard* gameBoard) {
