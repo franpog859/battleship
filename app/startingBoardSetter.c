@@ -27,6 +27,7 @@ void initializeGameBoard(GameBoard* gameBoard) {
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
 	Location* newLocation = malloc(sizeof(Location));
+	//TODO: Add division into different sizes of ships.
 	for (int i = 0; i < numberOfShips; i++) {
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);

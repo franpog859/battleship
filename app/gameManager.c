@@ -20,7 +20,7 @@ void prepareAndPlay(Parameters* params) {
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
 	if (isGameLoaded(params)) {
-		//loadGame(gameBoard);
+		//TODO: loadGame(gameBoard);
 	}
 	else {
 		setStartingGameBoard(gameBoard);
@@ -48,11 +48,15 @@ void doTheTurn(GameBoard* gameBoard) {
 }
 
 void changeActivePlayer(GameBoard* gameBoard) {
+	gameBoard->activePlayer = getOponent(gameBoard);
+}
+
+int getOponent(GameBoard* gameBoard) {
 	if (gameBoard->activePlayer == 0) {
-		gameBoard->activePlayer = 1;
+		return 1;
 	}
 	else {
-		gameBoard->activePlayer = 0;
+		return 0;
 	}
 }
 
@@ -63,8 +67,28 @@ void getMove(GameBoard* gameBoard, Location* moveLocation) {
 	} while (!isLocationValid(gameBoard->oponentBoard, gameBoard->activePlayer, moveLocation));
 }
 
-void setMove(GameBoard* gameBoard, Location* moveLocation) {
-	//TODO
+void setMove(GameBoard* gameBoard, Location* location) {
+	int oponent = getOponent(gameBoard);
+	if (gameBoard->ownBoard[oponent][location->row][location->col] == EMPTY) {
+		setMissingMove(gameBoard, location);
+	}
+	else {
+		setKillingMove(gameBoard, location);
+	}
+}
+
+void setMissingMove(GameBoard* gameBoard, Location* location) {
+	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = WATER;
+}
+
+void setKillingMove(GameBoard* gameBoard, Location* location) {
+	//TODO: If ship is not entirely killet it should be NOT_KILLED_SHIP.
+	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
+	increasePlayersPoints(gameBoard);
+}
+
+void increasePlayersPoints(GameBoard* gameBoard) {
+	gameBoard->pointsCounter[gameBoard->activePlayer]++;
 }
 
 void publicWinner(GameBoard* gameBoard) {

@@ -15,3 +15,5 @@ int main(int argNumber, char ** arguments) {
 
 	return 0;
 }
+
+//TODO: Wait after every turn and after setting all ships (one second).

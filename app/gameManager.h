@@ -17,9 +17,17 @@ void doTheTurn(GameBoard* gameBoard);
 
 void changeActivePlayer(GameBoard* gameBoard);
 
+int getOponent(GameBoard* gameBoard);
+
 void getMove(GameBoard* gameBoard, Location* moveLocation);
 
 void setMove(GameBoard* gameBoard, Location* moveLocation);
+
+void setMissingMove(GameBoard* gameBoard, Location* location);
+
+void setKillingMove(GameBoard* gameBoard, Location* location);
+
+void increasePlayersPoints(GameBoard* gameBoard);
 
 void publicWinner(GameBoard* gameBoard);
 
