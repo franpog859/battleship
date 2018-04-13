@@ -44,6 +44,10 @@ void doTheTurn(GameBoard* gameBoard) {
 	getMove(gameBoard, moveLocation);
 	setMove(gameBoard, moveLocation);
 
+	clearTerminal();
+	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
+	secondSleep();
+
 	free(moveLocation);
 }
 

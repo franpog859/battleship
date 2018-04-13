@@ -1,5 +1,6 @@
 #include "utils.h"
 #include <stdio.h>
+#include <time.h>
 
 void printHelpWithParams() {
 	printf("help with params");
@@ -24,4 +25,9 @@ void pause() {
 
 void printWinner(int winner) {
 	printf("The winner is player %d!", winner);
+}
+
+void secondSleep() {
+	unsigned int second = time(0) + 1;
+	while (time(0) < second);
 }

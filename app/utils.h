@@ -13,5 +13,7 @@ void pause();
 
 void printWinner(int winner);
 
+void secondSleep();
+
 #endif 
 

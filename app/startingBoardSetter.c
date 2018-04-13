@@ -2,12 +2,17 @@
 #include "gameBoard.h"
 #include "inputChecker.h"
 #include "gameBoardManager.h"
+#include "utils.h"
 #include <stdio.h>
 
 void setStartingGameBoard(GameBoard* gameBoard) {
 	initializeGameBoard(gameBoard);
 	for (int whichPlayer = 0; whichPlayer < numberOfPlayers; whichPlayer++) {
 		setPlayersBoard(gameBoard, whichPlayer);
+
+		clearTerminal();
+		printBoard(gameBoard->ownBoard, whichPlayer);
+		secondSleep();
 	}
 }
 
