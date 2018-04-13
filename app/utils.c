@@ -13,7 +13,11 @@ void clearTerminal() {
 	system("cls");
 }
 
-void clearBuffer()
-{
+void clearBuffer() {
 	while (getchar() != '\n');
+}
+
+void pause() {
+	printf("\nPress enter to continue...\n");
+	getchar();
 }

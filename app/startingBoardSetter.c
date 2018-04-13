@@ -13,7 +13,7 @@ void setStartingGameBoard(GameBoard* gameBoard) {
 
 void initializeGameBoard(GameBoard* gameBoard) {
 	gameBoard->firstPlayerMove = true;
-	gameBoard->numberOfTurn = 1;
+	gameBoard->numberOfTurns = 1;
 	for (int i = 0; i < numberOfPlayers; i++) {
 		for (int j = 0; j < boardSize; j++) {
 			for (int k = 0; k < boardSize; k++) {
@@ -21,6 +21,7 @@ void initializeGameBoard(GameBoard* gameBoard) {
 				gameBoard->oponentBoard[i][j][k] = EMPTY;
 			}
 		}
+		gameBoard->pointsCounter[i] = 0;
 	}
 }
 

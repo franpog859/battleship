@@ -9,5 +9,7 @@ void clearTerminal();
 
 void clearBuffer();
 
+void pause()
+
 #endif 
 
