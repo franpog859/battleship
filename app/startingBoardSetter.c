@@ -30,6 +30,7 @@ void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
 	for (int i = 0; i < numberOfShips; i++) {
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
+
 		getNewShipLocation(gameBoard, whichPlayer, newLocation);
 		setOwnShipLocation(gameBoard, whichPlayer, newLocation);
 	}

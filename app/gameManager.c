@@ -3,6 +3,7 @@
 #include "gameBoardManager.h"
 #include "gameBoard.h"
 #include "utils.h"
+#include "inputChecker.h"
 #include <stdbool.h>
 
 void prepareAndPlay(Parameters* params) {
@@ -35,8 +36,15 @@ bool isGameOn(GameBoard* gameBoard) {
 }
 
 void doTheTurn(GameBoard* gameBoard) { 
+	Location* moveLocation = malloc(sizeof(Location));
 	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
-	//TODO
+	clearTerminal();
+	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
+
+	getMove(gameBoard, moveLocation);
+	setMove(gameBoard, moveLocation);
+
+	free(moveLocation);
 }
 
 void changeActivePlayer(GameBoard* gameBoard) {
@@ -48,6 +56,17 @@ void changeActivePlayer(GameBoard* gameBoard) {
 	}
 }
 
+void getMove(GameBoard* gameBoard, Location* moveLocation) {
+	do {
+		initializeLocation(moveLocation);
+		getNewLocation(moveLocation);
+	} while (!isLocationValid(gameBoard->oponentBoard, gameBoard->activePlayer, moveLocation));
+}
+
+void setMove(GameBoard* gameBoard, Location* moveLocation) {
+	//TODO
+}
+
 void publicWinner(GameBoard* gameBoard) {
 	int winner = getWinner(gameBoard);
 	clearTerminal();
@@ -56,5 +75,6 @@ void publicWinner(GameBoard* gameBoard) {
 }
 
 int getWinner(GameBoard* gameBoard) { 
-	return gameBoard->activePlayer;
+	int lastTurnPlayer = gameBoard->activePlayer;
+	return lastTurnPlayer;
 }
