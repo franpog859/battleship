@@ -87,6 +87,7 @@ void setMissingMove(GameBoard* gameBoard, Location* location) {
 void setKillingMove(GameBoard* gameBoard, Location* location) {
 	if (isEntirelyKilled(gameBoard, location)) {
 		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
+		//TODO: It should kill entire ship recursively.
 	}
 	else {
 		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;

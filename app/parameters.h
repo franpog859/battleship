@@ -17,7 +17,5 @@ bool areParametersOk(Parameters* params);
 
 bool isGameLoaded(Parameters* params);
 
-void freeParameters(Parameters* params);
-
 #endif
 

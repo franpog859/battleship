@@ -11,7 +11,7 @@ int main(int argNumber, char ** arguments) {
 	else {
 		printHelpWithParams();
 	}
-	freeParameters(params);
+	free(params);
 
 	return 0;
 }
