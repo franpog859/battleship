@@ -28,6 +28,10 @@ void setKillingMove(GameBoard* gameBoard, Location* location);
 
 bool isEntirelyKilled(GameBoard* gameBoard, Location* location);
 
+void initializeProbeLocation(Location* probeLocation, int col, int row);
+
+bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation);
+
 void increasePlayersPoints(GameBoard* gameBoard);
 
 void publicWinner(GameBoard* gameBoard);
