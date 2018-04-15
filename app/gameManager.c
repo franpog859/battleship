@@ -86,8 +86,8 @@ void setMissingMove(GameBoard* gameBoard, Location* location) {
 
 void setKillingMove(GameBoard* gameBoard, Location* location) {
 	if (isEntirelyKilled(gameBoard, location)) {
-		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
 		//TODO: It should kill entire ship recursively.
+		killEntireShip(gameBoard, location);
 	}
 	else {
 		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;
@@ -121,7 +121,7 @@ void initializeProbeLocation(Location* probeLocation, int col, int row) {
 	probeLocation->row = row;
 }
 
-bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) {
+bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) { //FIX: If you started killing ship in the middle it gets killed before it should.
 	int oponent = getOponent(gameBoard);
 	if (probeLocation->col >= 0 &&
 		probeLocation->col <= 9 &&
@@ -132,6 +132,36 @@ bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) {
 		return false;
 	}
 	return true;
+}
+
+void killEntireShip(GameBoard* gameBoard, Location* location) {
+	Location* probeLocation = malloc(sizeof(Location)); 
+	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
+	
+	initializeProbeLocation(probeLocation, location->col + 1, location->row);
+	if (isNotKilledShip(gameBoard, probeLocation)) killEntireShip(gameBoard, probeLocation);
+
+	initializeProbeLocation(probeLocation, location->col - 1, location->row);
+	if (isNotKilledShip(gameBoard, probeLocation)) killEntireShip(gameBoard, probeLocation);
+
+	initializeProbeLocation(probeLocation, location->col, location->row + 1);
+	if (isNotKilledShip(gameBoard, probeLocation)) killEntireShip(gameBoard, probeLocation);
+
+	initializeProbeLocation(probeLocation, location->col, location->row - 1);
+	if (isNotKilledShip(gameBoard, probeLocation)) killEntireShip(gameBoard, probeLocation);
+	
+	free(probeLocation);
+}
+
+bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation) {
+	if (probeLocation->col >= 0 &&
+		probeLocation->col <= 9 &&
+		probeLocation->row >= 0 &&
+		probeLocation->row <= 9 &&
+		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == NOT_KILLED_SHIP) {
+		return true;
+	}
+	return false;
 }
 
 void increasePlayersPoints(GameBoard* gameBoard) {

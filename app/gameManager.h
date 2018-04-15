@@ -32,6 +32,10 @@ void initializeProbeLocation(Location* probeLocation, int col, int row);
 
 bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation);
 
+void killEntireShip(GameBoard* gameBoard, Location* location);
+
+bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation);
+
 void increasePlayersPoints(GameBoard* gameBoard);
 
 void publicWinner(GameBoard* gameBoard);
