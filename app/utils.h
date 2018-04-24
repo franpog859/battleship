@@ -11,7 +11,7 @@ void clearBuffer();
 
 void pause();
 
-void printWinner(int winner);
+void printWinner(int winner, int points);
 
 void secondSleep();
 

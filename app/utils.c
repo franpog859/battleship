@@ -23,8 +23,9 @@ void pause() {
 	getchar();
 }
 
-void printWinner(int winner) {
-	printf("The winner is player %d!", winner);
+void printWinner(int winner, int points) {
+	printf("The winner is player %d!\n", winner);
+	printf("You scored %d points!", points);
 }
 
 void secondSleep() {

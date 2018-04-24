@@ -18,5 +18,7 @@ void publicWinner(GameBoard* gameBoard);
 
 int getWinner(GameBoard* gameBoard);
 
+int countPoints(GameBoard* gameBoard);
+
 #endif 
 

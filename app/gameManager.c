@@ -43,12 +43,20 @@ void incrementNumberOfTurns(GameBoard* gameBoard) {
 
 void publicWinner(GameBoard* gameBoard) {
 	int winner = getWinner(gameBoard);
+	int points = countPoints(gameBoard);
 	clearTerminal();
-	printWinner(winner);
+	printWinner(winner, points);
 	pause();
 }
 
 int getWinner(GameBoard* gameBoard) { 
 	int lastTurnPlayer = gameBoard->activePlayer;
 	return lastTurnPlayer;
+}
+
+int countPoints(GameBoard* gameBoard) {
+	const int MAX_NUMBER_OF_TURNS = boardSize * boardSize;
+	const int MIN_NUMBER_OF_TURNS = numberOfShips;
+	
+	return MAX_NUMBER_OF_TURNS + MIN_NUMBER_OF_TURNS - gameBoard->numberOfTurns;
 }
