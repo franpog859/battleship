@@ -10,6 +10,7 @@ void prepareAndPlay(Parameters* params) {
 	prepareGameBoard(gameBoard, params);
 	
 	while (isGameOn(gameBoard)) {
+		incrementNumberOfTurns(gameBoard);
 		doTheTurn(gameBoard);
 	}
 
@@ -197,6 +198,12 @@ bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation) {
 
 void increasePlayersPoints(GameBoard* gameBoard) {
 	gameBoard->pointsCounter[gameBoard->activePlayer]++;
+}
+
+void incrementNumberOfTurns(GameBoard* gameBoard) {
+	if (gameBoard->activePlayer == 1) {
+		gameBoard->numberOfTurns++;
+	}
 }
 
 void publicWinner(GameBoard* gameBoard) {

@@ -17,7 +17,7 @@ void setStartingGameBoard(GameBoard* gameBoard) {
 
 void initializeGameBoard(GameBoard* gameBoard) {
 	gameBoard->activePlayer = 1; //It will be changed to 0 at the beginning of the first turn.
-	gameBoard->numberOfTurns = 1;
+	gameBoard->numberOfTurns = 0;
 	for (int i = 0; i < numberOfPlayers; i++) {
 		for (int j = 0; j < boardSize; j++) {
 			for (int k = 0; k < boardSize; k++) {

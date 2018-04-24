@@ -43,6 +43,8 @@ bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation);
 
 void increasePlayersPoints(GameBoard* gameBoard);
 
+void incrementNumberOfTurns(GameBoard* gameBoard);
+
 void publicWinner(GameBoard* gameBoard);
 
 int getWinner(GameBoard* gameBoard);
