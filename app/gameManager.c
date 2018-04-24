@@ -77,6 +77,7 @@ void setMove(GameBoard* gameBoard, Location* location) {
 	}
 	else {
 		setKillingMove(gameBoard, location);
+		increasePlayersPoints(gameBoard);
 	}
 }
 
@@ -85,44 +86,66 @@ void setMissingMove(GameBoard* gameBoard, Location* location) {
 }
 
 void setKillingMove(GameBoard* gameBoard, Location* location) {
-	if (isEntirelyKilled(gameBoard, location)) {
-		//TODO: It should kill entire ship recursively.
-		killEntireShip(gameBoard, location);
+	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;
+
+	if (isEntirelyKilled(gameBoard, location, location)) {
+		killEntireShip(gameBoard, location); 
 	}
-	else {
-		gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;
-	}
-	
-	increasePlayersPoints(gameBoard);
 }
 
-bool isEntirelyKilled(GameBoard* gameBoard, Location* location) { //FIX: If you started killing ship in the middle it gets killed before it should.
+bool isEntirelyKilled(GameBoard* gameBoard, Location* actualLocation, Location* previousLocation) {
 	Location* probeLocation = (Location*) malloc(sizeof(Location));
-	bool isEntirelyKilled = true;
+	bool isEntirelyKilledTemp = true;
 
-	initializeProbeLocation(probeLocation, location->col + 1, location->row);
-	if (!isLocationKilled(gameBoard, probeLocation)) 
-		isEntirelyKilled = false;
+	initializeProbeLocation(probeLocation, actualLocation->col + 1, actualLocation->row);
+	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp, 
+		probeLocation, actualLocation, previousLocation);
+	
+	initializeProbeLocation(probeLocation, actualLocation->col - 1, actualLocation->row);
+	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp, 
+		probeLocation, actualLocation, previousLocation);
 
-	initializeProbeLocation(probeLocation, location->col - 1, location->row);
-	if (!isLocationKilled(gameBoard, probeLocation)) 
-		isEntirelyKilled = false;
-
-	initializeProbeLocation(probeLocation, location->col, location->row + 1);
-	if (!isLocationKilled(gameBoard, probeLocation)) 
-		isEntirelyKilled = false;
-
-	initializeProbeLocation(probeLocation, location->col, location->row - 1);
-	if (!isLocationKilled(gameBoard, probeLocation)) 
-		isEntirelyKilled = false;
+	initializeProbeLocation(probeLocation, actualLocation->col, actualLocation->row + 1);
+	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp, 
+		probeLocation, actualLocation, previousLocation);
+	
+	initializeProbeLocation(probeLocation, actualLocation->col, actualLocation->row - 1);
+	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp, 
+		probeLocation, actualLocation, previousLocation);
 	
 	free(probeLocation);
-	return isEntirelyKilled;
+	return isEntirelyKilledTemp;
 }
 
 void initializeProbeLocation(Location* probeLocation, int col, int row) {
 	probeLocation->col = col;
 	probeLocation->row = row;
+}
+
+bool checkForProbeLocation(GameBoard* gameBoard, bool isEntirelyKilledTemp,
+	Location* probeLocation, Location* actualLocation, Location* previousLocation) {
+	if ((probeLocation->col != previousLocation->col || probeLocation->row != previousLocation->row) &&
+		isThereShip(gameBoard, probeLocation)) {
+		if (!isEntirelyKilled(gameBoard, probeLocation, actualLocation)) {
+			isEntirelyKilledTemp = false;
+		}
+	}
+	if (!isLocationKilled(gameBoard, probeLocation)) {
+		isEntirelyKilledTemp = false;
+	}
+	return isEntirelyKilledTemp;
+}
+
+bool isThereShip(GameBoard* gameBoard, Location* location) {
+	int oponent = getOponent(gameBoard);
+	if (location->col >= 0 &&
+		location->col <= 9 &&
+		location->row >= 0 &&
+		location->row <= 9 &&
+		gameBoard->ownBoard[oponent][location->row][location->col] == OWN_SHIP) {
+		return true;
+	}
+	return false;
 }
 
 bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) { 
