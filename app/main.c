@@ -3,7 +3,7 @@
 #include "gameManager.h"
 
 int main(int argNumber, char ** arguments) {
-	Parameters* params = malloc(sizeof(Parameters));
+	Parameters* params = (Parameters*) malloc(sizeof(Parameters));
 	getParameters(argNumber, arguments, params);
 	if (areParametersOk(params)) {
 		prepareAndPlay(params);

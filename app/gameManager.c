@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 void prepareAndPlay(Parameters* params) {
-	GameBoard* gameBoard = malloc(sizeof(GameBoard));
+	GameBoard* gameBoard = (GameBoard*) malloc(sizeof(GameBoard));
 	prepareGameBoard(gameBoard, params);
 	
 	while (isGameOn(gameBoard)) {
@@ -35,7 +35,7 @@ bool isGameOn(GameBoard* gameBoard) {
 }
 
 void doTheTurn(GameBoard* gameBoard) { 
-	Location* moveLocation = malloc(sizeof(Location));
+	Location* moveLocation = (Location*) malloc(sizeof(Location));
 	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
 	clearTerminal();
 	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
@@ -97,7 +97,7 @@ void setKillingMove(GameBoard* gameBoard, Location* location) {
 }
 
 bool isEntirelyKilled(GameBoard* gameBoard, Location* location) {
-	Location* probeLocation = malloc(sizeof(Location));
+	Location* probeLocation = (Location*) malloc(sizeof(Location));
 	bool isEntirelyKilled = true;
 
 	initializeProbeLocation(probeLocation, location->col + 1, location->row);
@@ -135,7 +135,7 @@ bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) { //FIX: If
 }
 
 void killEntireShip(GameBoard* gameBoard, Location* location) {
-	Location* probeLocation = malloc(sizeof(Location)); 
+	Location* probeLocation = (Location*) malloc(sizeof(Location)); 
 	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
 	
 	initializeProbeLocation(probeLocation, location->col + 1, location->row);
