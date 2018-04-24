@@ -25,6 +25,7 @@
     <ClCompile Include="..\app\main.c" />
     <ClCompile Include="..\app\parameters.c" />
     <ClCompile Include="..\app\startingBoardSetter.c" />
+    <ClCompile Include="..\app\turnManager.c" />
     <ClCompile Include="..\app\utils.c" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +34,7 @@
     <ClInclude Include="..\app\inputChecker.h" />
     <ClInclude Include="..\app\parameters.h" />
     <ClInclude Include="..\app\startingBoardSetter.h" />
+    <ClInclude Include="..\app\turnManager.h" />
     <ClInclude Include="..\app\utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
