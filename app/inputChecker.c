@@ -19,12 +19,7 @@ void getNewLocation(Location* newLocation) {
 }
 
 int castColAsInt(int col) {
-	if (col < 'a') {
-		return col - 'A';
-	}
-	else {
-		return col - 'a';
-	}
+	return (col < 'a') ? col - 'A' : col - 'a';
 }
 
 bool isLocationValid(char board[2][10][10], int whichPlayer, Location* newLocation) { //TODO Take care of all cases.

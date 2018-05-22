@@ -13,7 +13,7 @@ void pause();
 
 void printWinner(int winner, int points);
 
-void secondSleep();
+void twoSecondsSleep();
 
 #endif 
 

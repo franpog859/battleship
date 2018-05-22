@@ -28,7 +28,7 @@ void printWinner(int winner, int points) {
 	printf("You scored %d points!", points);
 }
 
-void secondSleep() {
-	unsigned int second = time(0) + 1;
+void twoSecondsSleep() {
+	unsigned int second = time(0) + 2;
 	while (time(0) < second);
 }

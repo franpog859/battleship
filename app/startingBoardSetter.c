@@ -11,7 +11,7 @@ void setStartingGameBoard(GameBoard* gameBoard) {
 
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
-		secondSleep();
+		twoSecondsSleep();
 	}
 }
 

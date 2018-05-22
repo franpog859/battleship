@@ -15,7 +15,7 @@ void doTheTurn(GameBoard* gameBoard) {
 
 	clearTerminal();
 	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
-	secondSleep();
+	twoSecondsSleep();
 
 	free(moveLocation);
 }
@@ -25,12 +25,7 @@ void changeActivePlayer(GameBoard* gameBoard) {
 }
 
 int getOponent(GameBoard* gameBoard) {
-	if (gameBoard->activePlayer == 0) {
-		return 1;
-	}
-	else {
-		return 0;
-	}
+	return (gameBoard->activePlayer == 0) ? 1 : 0;
 }
 
 void getMove(GameBoard* gameBoard, Location* moveLocation) {
