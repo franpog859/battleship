@@ -1,6 +1,7 @@
 #include "startingBoardSetter.h"
 #include "gameBoard.h"
 #include "inputChecker.h"
+#include "shipSetter.h"
 #include "utils.h"
 #include <stdio.h>
 
@@ -30,25 +31,23 @@ void initializeGameBoard(GameBoard* gameBoard) {
 }
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
-	Location* newLocation = (Location*) malloc(sizeof(Location));
+	ShipPosition* newShipPosition = (ShipPosition*) malloc(sizeof(ShipPosition));
+	int newShipLenght = 0;
 	//TODO: Add division into different sizes of ships.
-	for (int i = 0; i < numberOfShips; i++) {
+	for (int i = 0; i < numberOfSingleShips; i++) {
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
 
-		getNewShipLocation(gameBoard, whichPlayer, newLocation);
-		setOwnShipLocation(gameBoard, whichPlayer, newLocation);
+		newShipLenght = countShipLength(i);
+		getNewShipPosition(gameBoard, whichPlayer, newShipPosition, newShipLenght);
+		setOwnShip(gameBoard, whichPlayer, newShipPosition, newShipLenght);
 	}
-	free(newLocation);
+	free(newShipPosition);
 }
 
-void getNewShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation) {
-	do {
-		initializeLocation(newLocation);
-		getNewLocation(newLocation);
-	} while (!isLocationValid(gameBoard->ownBoard, whichPlayer, newLocation));
-}
-
-void setOwnShipLocation(GameBoard* gameBoard, int whichPlayer, Location* location) {
-	gameBoard->ownBoard[whichPlayer][location->row][location->col] = OWN_SHIP;
+int countShipLength(int shipNumber) {
+	if (shipNumber > 5) return 1;
+	else if (shipNumber > 2) return 2;
+	else if (shipNumber > 0) return 3;
+	else return 4;
 }

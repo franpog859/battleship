@@ -7,6 +7,7 @@
 #define boardSize 10
 
 #define numberOfShips 20
+#define numberOfSingleShips 10
 
 #define EMPTY '`'
 #define OWN_SHIP '#'

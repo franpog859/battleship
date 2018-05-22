@@ -39,6 +39,9 @@
     <ClCompile Include="..\app\turnManager.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\app\shipSetter.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app\parameters.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\app\turnManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\shipSetter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

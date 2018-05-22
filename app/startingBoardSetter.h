@@ -11,9 +11,7 @@ void initializeGameBoard(GameBoard* gameBoard);
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer);
 
-void getNewShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
-
-void setOwnShipLocation(GameBoard* gameBoard, int whichPlayer, Location* newLocation);
+int countShipLength(int shipNumber);
 
 #endif
 
