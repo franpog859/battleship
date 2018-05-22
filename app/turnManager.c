@@ -37,9 +37,8 @@ void getMove(GameBoard* gameBoard, Location* moveLocation) {
 
 void setMove(GameBoard* gameBoard, Location* location) {
 	int oponent = getOponent(gameBoard);
-	if (gameBoard->ownBoard[oponent][location->row][location->col] == EMPTY) {
+	if (gameBoard->ownBoard[oponent][location->row][location->col] == EMPTY)
 		setMissingMove(gameBoard, location);
-	}
 	else {
 		setKillingMove(gameBoard, location);
 		increasePlayersPoints(gameBoard);
@@ -53,9 +52,8 @@ void setMissingMove(GameBoard* gameBoard, Location* location) {
 void setKillingMove(GameBoard* gameBoard, Location* location) {
 	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = NOT_KILLED_SHIP;
 
-	if (isEntirelyKilled(gameBoard, location, location)) {
+	if (isEntirelyKilled(gameBoard, location, location))
 		killEntireShip(gameBoard, location);
-	}
 }
 
 bool isEntirelyKilled(GameBoard* gameBoard, Location* actualLocation, Location* previousLocation) {
@@ -90,14 +88,12 @@ void initializeProbeLocation(Location* probeLocation, int col, int row) {
 bool checkForProbeLocation(GameBoard* gameBoard, bool isEntirelyKilledTemp,
 	Location* probeLocation, Location* actualLocation, Location* previousLocation) {
 	if ((probeLocation->col != previousLocation->col || probeLocation->row != previousLocation->row) &&
-		isThereShip(gameBoard, probeLocation)) {
-		if (!isEntirelyKilled(gameBoard, probeLocation, actualLocation)) {
+		isThereShip(gameBoard, probeLocation))
+		if (!isEntirelyKilled(gameBoard, probeLocation, actualLocation))
 			isEntirelyKilledTemp = false;
-		}
-	}
-	if (!isLocationKilled(gameBoard, probeLocation)) {
+	if (!isLocationKilled(gameBoard, probeLocation))
 		isEntirelyKilledTemp = false;
-	}
+
 	return isEntirelyKilledTemp;
 }
 
@@ -107,9 +103,8 @@ bool isThereShip(GameBoard* gameBoard, Location* location) {
 		location->col <= 9 &&
 		location->row >= 0 &&
 		location->row <= 9 &&
-		gameBoard->ownBoard[oponent][location->row][location->col] == OWN_SHIP) {
+		gameBoard->ownBoard[oponent][location->row][location->col] == OWN_SHIP)
 		return true;
-	}
 	return false;
 }
 
@@ -120,9 +115,8 @@ bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) {
 		probeLocation->row >= 0 &&
 		probeLocation->row <= 9 &&
 		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == EMPTY &&
-		gameBoard->ownBoard[oponent][probeLocation->row][probeLocation->col] == OWN_SHIP) {
+		gameBoard->ownBoard[oponent][probeLocation->row][probeLocation->col] == OWN_SHIP)
 		return false;
-	}
 	return true;
 }
 
@@ -154,9 +148,8 @@ bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation) {
 		probeLocation->col <= 9 &&
 		probeLocation->row >= 0 &&
 		probeLocation->row <= 9 &&
-		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == NOT_KILLED_SHIP) {
+		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == NOT_KILLED_SHIP)
 		return true;
-	}
 	return false;
 }
 

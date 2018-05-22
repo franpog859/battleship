@@ -20,22 +20,25 @@ void initializeShipPosition(ShipPosition* shipPosition, int newShipLenght) {
 void getNewShipPositionInput(ShipPosition* newShipPosition) {
 	char col;
 	char tilt;
+
 	printf("\ne.g.: C8H		- for ship rotated horizontally with prow at C8  (C8V	- ...vertically...)");
 	printf("\nType a location for ship of %d size: ", newShipPosition->length);
+
 	scanf_s(" %c", &col);
 	newShipPosition->headLocation.col = castColAsInt(col);
 	scanf_s("%d", &newShipPosition->headLocation.row);
 	scanf_s(" %c", &tilt);
-	checkTiltInput(newShipPosition, tilt);
+	validTiltInput(newShipPosition, tilt);
 	newShipPosition->isVertical = castTiltAsIsVertical(tilt);
+
 	clearBuffer();
 }
 
-void checkTiltInput(ShipPosition* shipPosition, int tilt) {
+void validTiltInput(ShipPosition* shipPosition, int tilt) {
 	if (tilt == 'V' || tilt == 'v' ||
 		tilt == 'H' || tilt == 'h') 
 		return;
-	shipPosition->headLocation.col = -1; //Col changed to inproper value. Whole position is invalid now.
+	shipPosition->headLocation.col = -1; //Col is changed to inproper value. Whole position is invalid now.
 }
 
 bool castTiltAsIsVertical(int tilt) {
@@ -82,8 +85,10 @@ bool isLocationOccupied(char board[2][10][10], int whichPlayer, const Location t
 }
 
 void setOwnShip(GameBoard* gameBoard, int whichPlayer, ShipPosition* shipPosition) {
-	if (shipPosition->isVertical) for (int i = 0; i < shipPosition->length; i++) 
+	if (shipPosition->isVertical) 
+		for (int i = 0; i < shipPosition->length; i++) 
 			gameBoard->ownBoard[whichPlayer][shipPosition->headLocation.row + i][shipPosition->headLocation.col] = OWN_SHIP;
-	else for (int i = 0; i < shipPosition->length; i++)
+	else 
+		for (int i = 0; i < shipPosition->length; i++)
 			gameBoard->ownBoard[whichPlayer][shipPosition->headLocation.row][shipPosition->headLocation.col + i] = OWN_SHIP;
 }

@@ -19,26 +19,22 @@ void prepareAndPlay(Parameters* params) {
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
-	if (isGameLoaded(params)) {
-		//TODO: loadGame(gameBoard);
-	}
-	else {
+	if (isGameLoaded(params))
+		;//TODO: loadGame(gameBoard);
+	else 
 		setStartingGameBoard(gameBoard);
-	}
 }
 
 bool isGameOn(GameBoard* gameBoard) {
 	int lastTurnPlayer = gameBoard->activePlayer;
-	if (gameBoard->pointsCounter[lastTurnPlayer] == numberOfShips) {
+	if (gameBoard->pointsCounter[lastTurnPlayer] == numberOfShips) 
 		return false;
-	}
 	return true;
 }
 
 void incrementNumberOfTurns(GameBoard* gameBoard) {
-	if (gameBoard->activePlayer == 1) {
+	if (gameBoard->activePlayer == 1) 
 		gameBoard->numberOfTurns++;
-	}
 }
 
 void publicWinner(GameBoard* gameBoard) {

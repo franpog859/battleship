@@ -17,7 +17,7 @@ void initializeShipPosition(ShipPosition* newShipPosition, int newShipLenght);
 
 void getNewShipPositionInput(ShipPosition* newShipPosition);
 
-void checkTiltInput(ShipPosition* shipPosition, int tilt);
+void validTiltInput(ShipPosition* shipPosition, int tilt);
 
 bool castTiltAsIsVertical(int tilt);
 

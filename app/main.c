@@ -5,13 +5,11 @@
 int main(int argNumber, char ** arguments) {
 	Parameters* params = (Parameters*) malloc(sizeof(Parameters));
 	getParameters(argNumber, arguments, params);
-	if (areParametersOk(params)) {
+	if (areParametersOk(params))
 		prepareAndPlay(params);
-	}
-	else {
+	else
 		printHelpWithParams();
-	}
+	
 	free(params);
-
 	return 0;
 }
