@@ -43,12 +43,54 @@ bool castTiltAsIsVertical(int tilt) {
 }
 
 bool isShipPositionValid(char board[2][10][10], int whichPlayer, ShipPosition* shipPosition) {
-	return true; //TODO
+	if (shipPosition->isVertical) {
+		for (int i = 0; i < shipPosition->length; i++) {
+			if (shipPosition->headLocation.col > 9 || shipPosition->headLocation.col < 0) {
+				return false;
+			}
+			if (shipPosition->headLocation.row + i > 9 || shipPosition->headLocation.row + i < 0) {
+				return false;
+			}
+			if (board[whichPlayer][shipPosition->headLocation.row + i][shipPosition->headLocation.col] != EMPTY) {
+				return false;
+			}
+		}
+		for (int i = -1; i < shipPosition->length + 1; i++) {
+			for (int j = -1; j < 2; j++) {
+				if (!(shipPosition->headLocation.col + j > 9 || shipPosition->headLocation.col + j < 0 ||
+					shipPosition->headLocation.row + i > 9 || shipPosition->headLocation.row + i < 0) &&
+					board[whichPlayer][shipPosition->headLocation.row + i][shipPosition->headLocation.col + j] != EMPTY)
+					return false;
+			}
+		}
+	}
+	else {
+		for (int i = 0; i < shipPosition->length; i++) {
+			if (shipPosition->headLocation.col + i > 9 || shipPosition->headLocation.col + 1 < 0) {
+				return false;
+			}
+			if (shipPosition->headLocation.row > 9 || shipPosition->headLocation.row < 0) {
+				return false;
+			}
+			if (board[whichPlayer][shipPosition->headLocation.row + i][shipPosition->headLocation.col] != EMPTY) {
+				return false;
+			}
+		}
+		for (int i = -1; i < shipPosition->length + 1; i++) {
+			for (int j = -1; j < 2; j++) {
+				if (!(shipPosition->headLocation.col + i > 9 || shipPosition->headLocation.col + i < 0 ||
+					shipPosition->headLocation.row + j > 9 || shipPosition->headLocation.row + j < 0) &&
+					board[whichPlayer][shipPosition->headLocation.row + j][shipPosition->headLocation.col + i] != EMPTY)
+					return false;
+			}
+		}
+	}
+	return true; 
 }
 
-void setOwnShip(GameBoard* gameBoard, int whichPlayer, ShipPosition* shipPosition, int shipLenght) {
-	if (shipPosition->isVertical) for (int i = 0; i < shipLenght; i++) 
+void setOwnShip(GameBoard* gameBoard, int whichPlayer, ShipPosition* shipPosition) {
+	if (shipPosition->isVertical) for (int i = 0; i < shipPosition->length; i++) 
 			gameBoard->ownBoard[whichPlayer][shipPosition->headLocation.row + i][shipPosition->headLocation.col] = OWN_SHIP;
-	else for (int i = 0; i < shipLenght; i++) 
+	else for (int i = 0; i < shipPosition->length; i++)
 			gameBoard->ownBoard[whichPlayer][shipPosition->headLocation.row][shipPosition->headLocation.col + i] = OWN_SHIP;
 }

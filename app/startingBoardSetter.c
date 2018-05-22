@@ -40,7 +40,7 @@ void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
 
 		newShipLenght = countShipLength(i);
 		getNewShipPosition(gameBoard, whichPlayer, newShipPosition, newShipLenght);
-		setOwnShip(gameBoard, whichPlayer, newShipPosition, newShipLenght);
+		setOwnShip(gameBoard, whichPlayer, newShipPosition);
 	}
 	free(newShipPosition);
 }
