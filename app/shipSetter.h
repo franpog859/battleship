@@ -23,6 +23,8 @@ bool castTiltAsIsVertical(int tilt);
 
 bool isShipPositionValid(char board[2][10][10], int whichPlayer, ShipPosition* shipPosition);
 
+bool isLocationOccupied(char board[2][10][10], int whichPlayer, Location testLocation);
+
 void setOwnShip(GameBoard* gameBoard, int whichPlayer, ShipPosition* shipPosition);
 
 #endif 
