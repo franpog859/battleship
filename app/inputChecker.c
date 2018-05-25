@@ -1,6 +1,7 @@
 #include "inputChecker.h"
 #include "gameBoard.h"
 #include "utils.h"
+#include "parameters.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -9,25 +10,34 @@ void initializeLocation(Location* location) {
 	location->row = -1;
 }
 
-void getNewLocation(Location* newLocation) {
-	char col, flag;
+void getNewLocation(Location* newLocation, Parameters* params) {
+	char col;
 
-	printf("\nType -h for help.");
+	printf("\n		-h for help.");
+	printf("\n		-e to exit.");
+	printf("\n		-s to save and exit.");
 	printf("\nType a location (e.g.: C8): ");
 	scanf_s(" %c", &col);
 
-	if (col == '-') {
-		flag = getchar();
-		if (isHelpFlag(flag))
-			printHelpWithMove();
-		//if (isExitFlag(flag))
-			//return;
-	}
+	if (col == '-')
+		checkFlags(params);
 	else {
 		scanf_s("%d", &newLocation->row);
 		newLocation->col = castColAsInt(col);
 	}
 	clearBuffer();
+}
+
+void checkFlags(Parameters* params) {
+	char flag = getchar();
+	if (isHelpFlag(flag))
+		printHelpWithMove();
+	if (isExitFlag(flag))
+		setExitParam(params);
+	if (isSaveFlag(flag)) {
+		setSaveParam(params);
+		setExitParam(params);
+	}
 }
 
 int castColAsInt(int col) {

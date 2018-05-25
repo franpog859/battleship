@@ -2,6 +2,7 @@
 #define GAMEBOARD_H
 
 #include <stdbool.h>
+#include "parameters.h"
 
 #define numberOfPlayers 2
 #define boardSize 10
@@ -22,6 +23,7 @@ typedef struct GameBoard {
 	int activePlayer;
 	int numberOfTurns;
 	int pointsCounter[2]; //Two counters for wach player.
+	Parameters* params;
 } GameBoard;
 
 void printBoard(char board[numberOfPlayers][boardSize][boardSize], int whichPlayer);

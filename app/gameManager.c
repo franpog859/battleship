@@ -9,19 +9,24 @@ void prepareAndPlay(Parameters* params) {
 	GameBoard gameBoard;
 	prepareGameBoard(&gameBoard, params);
 	
-	while (isGameOn(&gameBoard)) {
+	while (isGameOn(&gameBoard) && !isExitParam(params)) {
 		incrementNumberOfTurns(&gameBoard);
 		doTheTurn(&gameBoard);
 	}
 
-	publicWinner(&gameBoard);
+	if (!isExitParam(params)) {
+		publicWinner(&gameBoard);
+		//TODO: saveHighScore(gameBoard);
+	}
+	else if (isSaveParam(params))
+		;//TODO: saveGame(gameBoard);
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
 	if (isGameLoaded(params))
-		;//TODO: loadGame(gameBoard);
+		;//TODO: loadGame(gameBoard, params);
 	else 
-		setStartingGameBoard(gameBoard);
+		setStartingGameBoard(gameBoard, params);
 }
 
 bool isGameOn(GameBoard* gameBoard) {

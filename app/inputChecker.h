@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "gameBoard.h"
+#include "parameters.h"
 
 typedef struct Location {
 	int col;
@@ -11,7 +12,9 @@ typedef struct Location {
 
 void initializeLocation(Location* location);
 
-void getNewLocation(Location* newLocation);
+void getNewLocation(Location* newLocation, Parameters* params);
+
+void checkFlags(Parameters* params);
 
 int castColAsInt(int col);
 

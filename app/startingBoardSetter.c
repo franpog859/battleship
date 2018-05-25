@@ -5,8 +5,8 @@
 #include "utils.h"
 #include <stdio.h>
 
-void setStartingGameBoard(GameBoard* gameBoard) {
-	initializeGameBoard(gameBoard);
+void setStartingGameBoard(GameBoard* gameBoard, Parameters* params) {
+	initializeGameBoard(gameBoard, params);
 	for (int whichPlayer = 0; whichPlayer < numberOfPlayers; whichPlayer++) {
 		setPlayersBoard(gameBoard, whichPlayer);
 
@@ -16,7 +16,7 @@ void setStartingGameBoard(GameBoard* gameBoard) {
 	}
 }
 
-void initializeGameBoard(GameBoard* gameBoard) {
+void initializeGameBoard(GameBoard* gameBoard, Parameters* params) {
 	gameBoard->activePlayer = 1; //It will be changed to 0 at the beginning of the first turn.
 	gameBoard->numberOfTurns = 0;
 	for (int i = 0; i < numberOfPlayers; i++) {
@@ -27,6 +27,7 @@ void initializeGameBoard(GameBoard* gameBoard) {
 			}
 		gameBoard->pointsCounter[i] = 0;
 	}
+	gameBoard->params = params;
 }
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {

@@ -38,6 +38,8 @@ void initializeParameters(Parameters* params) {
 	params->load = false;
 	params->si = false;
 	params->help = false;
+	params->exit = false;
+	params->save = false;
 }
 
 bool areParametersOk(Parameters* params) {
@@ -50,4 +52,28 @@ bool isGameLoaded(Parameters* params) {
 
 bool isHelpFlag(char flag) {
 	return (flag == 'h') ? true : false;
+}
+
+bool isExitFlag(char flag) {
+	return (flag == 'e') ? true : false;
+}
+
+void setExitParam(Parameters* params) {
+	params->exit = true;
+}
+
+bool isExitParam(Parameters* params) {
+	return params->exit;
+}
+
+bool isSaveFlag(char flag) {
+	return (flag == 's') ? true : false;
+}
+
+void setSaveParam(Parameters* params) {
+	params->save = true;
+}
+
+bool isSaveParam(Parameters* params) {
+	return params->save;
 }
