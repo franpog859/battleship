@@ -25,8 +25,8 @@ void initializeShipPosition(ShipPosition* shipPosition, int newShipLenght) {
 void getNewShipPositionInput(ShipPosition* newShipPosition, Parameters* params) {
 	char col, tilt;
 
-	printf("\n	-h for help.");
-	printf("\n	-e to exit.");
+	printf("\n	-h	- to get help with ship setting");
+	printf("\n	-e	- to exit the game");
 	printf("\ne.g.: C8H		- for ship rotated horizontally with prow at C8  (C8V	- ...vertically...)");
 	printf("\nType a location for ship of %d size: ", newShipPosition->length);
 	scanf_s(" %c", &col);

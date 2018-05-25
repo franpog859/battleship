@@ -3,15 +3,38 @@
 #include <time.h>
 
 void printHelpWithParams() {
-	printf("help with params");
+	printf("\nUse these flags to run the battleship CLI game:");
+	printf("\n	-h	--help			- to get help with flags");
+	printf("\n	-l	--load			- to to load previously saved game");
+	printf("\n	-s	--highScores	- to print high scores");
+	printf("\n	none				- to run the game");
 }
 
 void printHelpWithShipSetting() {
-	printf("help with ship setting");
+	printf("\nRemember to set proper position for your ship!");
+	printf("\n	- the whole ship must fit on the board");
+	printf("\n	- ships cannot overlap");
+	printf("\n	- ships cannot touch each other");
+	printf("\n");
+	printf("\nThe first character indicates the column number for the ship prow (A - J or a - j)");
+	printf("\nThe second character indicates the row number for the ship prow (0 - 9)");
+	printf("\nThe third character indicates the tilt of your ship ((H or V) or (h or v))");
+	printf("\n");
+	printf("\n	-h	- to get help with ship setting");
+	printf("\n	-e	- to exit the game");
 }
 
 void printHelpWithMove() {
-	printf("help with move");
+	printf("\nRemember to shot properly!");
+	printf("\n	- your command must fit the board");
+	printf("\n	- you cannot shot the same location more than once");
+	printf("\n");
+	printf("\nThe first character indicates the column number of your command (A - J or a - j)");
+	printf("\nThe second character indicates the row number of your command (0 - 9)");
+	printf("\n");
+	printf("\n	-h	- to get help with the move");
+	printf("\n	-e	- to exit the game");
+	printf("\n	-s	- to save and exit the game");
 }
 
 void clearTerminal() {
@@ -28,8 +51,8 @@ void pause() {
 }
 
 void printWinner(int winner, int points) {
-	printf("The winner is player %d!\n", winner);
-	printf("You scored %d points!", points);
+	printf("\nThe winner is player %d!", winner);
+	printf("\nYou scored %d points!", points);
 }
 
 void twoSecondsSleep() {

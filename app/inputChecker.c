@@ -13,9 +13,9 @@ void initializeLocation(Location* location) {
 void getNewLocation(Location* newLocation, Parameters* params) {
 	char col;
 
-	printf("\n	-h for help.");
-	printf("\n	-e to exit.");
-	printf("\n	-s to save and exit.");
+	printf("\n	-h	- to get help with the move");
+	printf("\n	-e	- to exit the game");
+	printf("\n	-s	- to save and exit the game");
 	printf("\nType a location (e.g.: C8): ");
 	scanf_s(" %c", &col);
 
