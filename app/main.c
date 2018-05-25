@@ -1,5 +1,6 @@
 #include "parameters.h"
 #include "utils.h"
+#include "save.h"
 #include "gameManager.h"
 
 int main(int argNumber, char ** arguments) {
@@ -8,7 +9,7 @@ int main(int argNumber, char ** arguments) {
 
 	if (areParametersOk(&params)) {
 		if (isHighScoresParam(&params))
-			;//TODO printHighScores();
+			printHighScores();
 		else
 			prepareAndPlay(&params);
 	}

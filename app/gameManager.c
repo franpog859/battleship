@@ -8,6 +8,7 @@
 
 void prepareAndPlay(Parameters* params) {
 	GameBoard gameBoard;
+	int score;
 	prepareGameBoard(&gameBoard, params);
 	
 	while (isGameOn(&gameBoard) && !isExitParam(params)) {
@@ -16,16 +17,21 @@ void prepareAndPlay(Parameters* params) {
 	}
 
 	if (!isExitParam(params)) {
-		publicWinner(&gameBoard);
-		//TODO: saveHighScore(&gameBoard);
+		score = countPoints(&gameBoard);
+		publicWinner(&gameBoard, score);
+		saveHighScore(score);
+		clearTerminal();
+		printHighScores();
 	}
 	else if (isSaveParam(params))
 		saveGame(&gameBoard);
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
-	if (isGameLoaded(params))
-		loadGame(gameBoard, params);
+	if (isGameLoaded(params)) {
+		if (!loadGame(gameBoard, params))
+			setStartingGameBoard(gameBoard, params);
+	}
 	else 
 		setStartingGameBoard(gameBoard, params);
 }
@@ -42,11 +48,10 @@ void incrementNumberOfTurns(GameBoard* gameBoard) {
 		gameBoard->numberOfTurns++;
 }
 
-void publicWinner(GameBoard* gameBoard) {
+void publicWinner(GameBoard* gameBoard, int score) {
 	int winner = getWinner(gameBoard);
-	int points = countPoints(gameBoard);
 	clearTerminal();
-	printWinner(winner, points);
+	printWinner(winner, score);
 	pause();
 }
 
