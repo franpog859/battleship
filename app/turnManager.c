@@ -5,19 +5,17 @@
 #include <stdbool.h>
 
 void doTheTurn(GameBoard* gameBoard) {
-	Location* moveLocation = (Location*)malloc(sizeof(Location));
+	Location moveLocation;
 	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
 	clearTerminal();
 	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
 
-	getMove(gameBoard, moveLocation);
-	setMove(gameBoard, moveLocation);
+	getMove(gameBoard, &moveLocation);
+	setMove(gameBoard, &moveLocation);
 
 	clearTerminal();
 	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
 	twoSecondsSleep();
-
-	free(moveLocation);
 }
 
 void changeActivePlayer(GameBoard* gameBoard) {
@@ -57,26 +55,25 @@ void setKillingMove(GameBoard* gameBoard, Location* location) {
 }
 
 bool isEntirelyKilled(GameBoard* gameBoard, Location* actualLocation, Location* previousLocation) {
-	Location* probeLocation = (Location*)malloc(sizeof(Location));
+	Location probeLocation;
 	bool isEntirelyKilledTemp = true;
 
-	initializeProbeLocation(probeLocation, actualLocation->col + 1, actualLocation->row);
+	initializeProbeLocation(&probeLocation, actualLocation->col + 1, actualLocation->row);
 	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp,
-		probeLocation, actualLocation, previousLocation);
+		&probeLocation, actualLocation, previousLocation);
 
-	initializeProbeLocation(probeLocation, actualLocation->col - 1, actualLocation->row);
+	initializeProbeLocation(&probeLocation, actualLocation->col - 1, actualLocation->row);
 	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp,
-		probeLocation, actualLocation, previousLocation);
+		&probeLocation, actualLocation, previousLocation);
 
-	initializeProbeLocation(probeLocation, actualLocation->col, actualLocation->row + 1);
+	initializeProbeLocation(&probeLocation, actualLocation->col, actualLocation->row + 1);
 	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp,
-		probeLocation, actualLocation, previousLocation);
+		&probeLocation, actualLocation, previousLocation);
 
-	initializeProbeLocation(probeLocation, actualLocation->col, actualLocation->row - 1);
+	initializeProbeLocation(&probeLocation, actualLocation->col, actualLocation->row - 1);
 	isEntirelyKilledTemp = checkForProbeLocation(gameBoard, isEntirelyKilledTemp,
-		probeLocation, actualLocation, previousLocation);
+		&probeLocation, actualLocation, previousLocation);
 
-	free(probeLocation);
 	return isEntirelyKilledTemp;
 }
 
@@ -121,26 +118,24 @@ bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) {
 }
 
 void killEntireShip(GameBoard* gameBoard, Location* location) {
-	Location* probeLocation = (Location*)malloc(sizeof(Location));
+	Location probeLocation;
 	gameBoard->oponentBoard[gameBoard->activePlayer][location->row][location->col] = KILLED_SHIP;
 
-	initializeProbeLocation(probeLocation, location->col + 1, location->row);
-	if (isNotKilledShip(gameBoard, probeLocation))
-		killEntireShip(gameBoard, probeLocation);
+	initializeProbeLocation(&probeLocation, location->col + 1, location->row);
+	if (isNotKilledShip(gameBoard, &probeLocation))
+		killEntireShip(gameBoard, &probeLocation);
 
-	initializeProbeLocation(probeLocation, location->col - 1, location->row);
-	if (isNotKilledShip(gameBoard, probeLocation))
-		killEntireShip(gameBoard, probeLocation);
+	initializeProbeLocation(&probeLocation, location->col - 1, location->row);
+	if (isNotKilledShip(gameBoard, &probeLocation))
+		killEntireShip(gameBoard, &probeLocation);
 
-	initializeProbeLocation(probeLocation, location->col, location->row + 1);
-	if (isNotKilledShip(gameBoard, probeLocation))
-		killEntireShip(gameBoard, probeLocation);
+	initializeProbeLocation(&probeLocation, location->col, location->row + 1);
+	if (isNotKilledShip(gameBoard, &probeLocation))
+		killEntireShip(gameBoard, &probeLocation);
 
-	initializeProbeLocation(probeLocation, location->col, location->row - 1);
-	if (isNotKilledShip(gameBoard, probeLocation))
-		killEntireShip(gameBoard, probeLocation);
-
-	free(probeLocation);
+	initializeProbeLocation(&probeLocation, location->col, location->row - 1);
+	if (isNotKilledShip(gameBoard, &probeLocation))
+		killEntireShip(gameBoard, &probeLocation);
 }
 
 bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation) {

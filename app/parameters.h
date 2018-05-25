@@ -17,5 +17,7 @@ bool areParametersOk(Parameters* params);
 
 bool isGameLoaded(Parameters* params);
 
+bool isHelpFlag(char flag);
+
 #endif
 

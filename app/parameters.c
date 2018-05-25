@@ -1,5 +1,6 @@
 #include "parameters.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 void getParameters(int argNumber, char ** arguments, Parameters* params) {
 	const char* loadShort = "-l";
@@ -45,4 +46,8 @@ bool areParametersOk(Parameters* params) {
 
 bool isGameLoaded(Parameters* params) {
 	return params->load;
+}
+
+bool isHelpFlag(char flag) {
+	return (flag == 'h') ? true : false;
 }

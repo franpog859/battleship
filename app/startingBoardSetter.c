@@ -30,18 +30,16 @@ void initializeGameBoard(GameBoard* gameBoard) {
 }
 
 void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
-	ShipPosition* newShipPosition = (ShipPosition*) malloc(sizeof(ShipPosition));
+	ShipPosition newShipPosition;
 	int newShipLength = 0;
-	//TODO: Add division into different sizes of ships.
 	for (int shipNumber = 0; shipNumber < numberOfSingleShips; shipNumber++) {
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
 
 		newShipLength = countShipLength(shipNumber);
-		getNewShipPosition(gameBoard, whichPlayer, newShipPosition, newShipLength);
-		setOwnShip(gameBoard, whichPlayer, newShipPosition);
+		getNewShipPosition(gameBoard, whichPlayer, &newShipPosition, newShipLength);
+		setOwnShip(gameBoard, whichPlayer, &newShipPosition);
 	}
-	free(newShipPosition);
 }
 
 int countShipLength(int shipNumber) {

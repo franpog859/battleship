@@ -6,16 +6,15 @@
 #include <stdbool.h>
 
 void prepareAndPlay(Parameters* params) {
-	GameBoard* gameBoard = (GameBoard*) malloc(sizeof(GameBoard));
-	prepareGameBoard(gameBoard, params);
+	GameBoard gameBoard;
+	prepareGameBoard(&gameBoard, params);
 	
-	while (isGameOn(gameBoard)) {
-		incrementNumberOfTurns(gameBoard);
-		doTheTurn(gameBoard);
+	while (isGameOn(&gameBoard)) {
+		incrementNumberOfTurns(&gameBoard);
+		doTheTurn(&gameBoard);
 	}
 
-	publicWinner(gameBoard);
-	free(gameBoard);
+	publicWinner(&gameBoard);
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {

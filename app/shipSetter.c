@@ -58,7 +58,7 @@ bool isShipPositionValid(char board[2][10][10], int whichPlayer, ShipPosition* s
 		for (int i = -1; i < shipPosition->length + 1; i++) for (int j = -1; j < 2; j++) {
 			testLocation.col = shipPosition->headLocation.col + j;
 			testLocation.row = shipPosition->headLocation.row + i;
-			if (isLocationOccupied(board, whichPlayer, testLocation)) return false;
+			if (isLocationOccupied(board, whichPlayer, &testLocation)) return false;
 		}
 	}
 	else {
@@ -70,16 +70,16 @@ bool isShipPositionValid(char board[2][10][10], int whichPlayer, ShipPosition* s
 		for (int i = -1; i < shipPosition->length + 1; i++) for (int j = -1; j < 2; j++) {
 			testLocation.col = shipPosition->headLocation.col + i;
 			testLocation.row = shipPosition->headLocation.row + j;
-			if (isLocationOccupied(board, whichPlayer, testLocation)) return false;
+			if (isLocationOccupied(board, whichPlayer, &testLocation)) return false;
 		}
 	}
 	return true; 
 }
 
-bool isLocationOccupied(char board[2][10][10], int whichPlayer, const Location testLocation) {
-	if (!(testLocation.col > 9 || testLocation.col < 0 ||
-		testLocation.row > 9 || testLocation.row < 0) &&
-		board[whichPlayer][testLocation.row][testLocation.col] != EMPTY)
+bool isLocationOccupied(char board[2][10][10], int whichPlayer, Location* testLocation) {
+	if (!(testLocation->col > 9 || testLocation->col < 0 ||
+		testLocation->row > 9 || testLocation->row < 0) &&
+		board[whichPlayer][testLocation->row][testLocation->col] != EMPTY)
 		return true;
 	return false;
 }
