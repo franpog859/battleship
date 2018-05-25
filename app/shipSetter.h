@@ -3,6 +3,7 @@
 
 #include "inputChecker.h"
 #include "gameBoard.h"
+#include "parameters.h"
 #include <stdbool.h>
 
 typedef struct ShipPosition {
@@ -15,7 +16,9 @@ void getNewShipPosition(GameBoard* gameBoard, int whichPlayer, ShipPosition* new
 
 void initializeShipPosition(ShipPosition* newShipPosition, int newShipLenght);
 
-void getNewShipPositionInput(ShipPosition* newShipPosition);
+void getNewShipPositionInput(ShipPosition* newShipPosition, Parameters* params);
+
+void checkFlagsDuringPreparation(Parameters* params);
 
 void validTiltInput(ShipPosition* shipPosition, int tilt);
 

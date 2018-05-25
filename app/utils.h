@@ -3,6 +3,8 @@
 
 void printHelpWithParams();
 
+void printHelpWithShipSetting();
+
 void printHelpWithMove();
 
 void clearTerminal();

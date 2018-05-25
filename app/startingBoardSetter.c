@@ -9,6 +9,8 @@ void setStartingGameBoard(GameBoard* gameBoard, Parameters* params) {
 	initializeGameBoard(gameBoard, params);
 	for (int whichPlayer = 0; whichPlayer < numberOfPlayers; whichPlayer++) {
 		setPlayersBoard(gameBoard, whichPlayer);
+		if (isExitParam(params))
+			return;
 
 		clearTerminal();
 		printBoard(gameBoard->ownBoard, whichPlayer);
@@ -34,11 +36,10 @@ void setPlayersBoard(GameBoard* gameBoard, int whichPlayer) {
 	ShipPosition newShipPosition;
 	int newShipLength = 0;
 	for (int shipNumber = 0; shipNumber < numberOfSingleShips; shipNumber++) {
-		clearTerminal();
-		printBoard(gameBoard->ownBoard, whichPlayer);
-
 		newShipLength = countShipLength(shipNumber);
 		getNewShipPosition(gameBoard, whichPlayer, &newShipPosition, newShipLength);
+		if (isExitParam(gameBoard->params))
+			return;
 		setOwnShip(gameBoard, whichPlayer, &newShipPosition);
 	}
 }

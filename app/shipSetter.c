@@ -1,13 +1,18 @@
 #include "shipSetter.h"
 #include "inputChecker.h"
+#include "parameters.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdbool.h>
 
 void getNewShipPosition(GameBoard* gameBoard, int whichPlayer, ShipPosition* newShipPosition, int newShipLenght) {
 	do {
+		clearTerminal();
+		printBoard(gameBoard->ownBoard, whichPlayer);
+
 		initializeShipPosition(newShipPosition, newShipLenght);
-		getNewShipPositionInput(newShipPosition); 
-	} while (!isShipPositionValid(gameBoard->ownBoard, whichPlayer, newShipPosition));
+		getNewShipPositionInput(newShipPosition, gameBoard->params); 
+	} while (!isShipPositionValid(gameBoard->ownBoard, whichPlayer, newShipPosition) && !isExitParam(gameBoard->params));
 }
 
 void initializeShipPosition(ShipPosition* shipPosition, int newShipLenght) {
@@ -17,21 +22,36 @@ void initializeShipPosition(ShipPosition* shipPosition, int newShipLenght) {
 	shipPosition->length = newShipLenght;
 }
 
-void getNewShipPositionInput(ShipPosition* newShipPosition) {
-	char col;
-	char tilt;
+void getNewShipPositionInput(ShipPosition* newShipPosition, Parameters* params) {
+	char col, tilt;
 
+	printf("\n	-h for help.");
+	printf("\n	-e to exit.");
 	printf("\ne.g.: C8H		- for ship rotated horizontally with prow at C8  (C8V	- ...vertically...)");
 	printf("\nType a location for ship of %d size: ", newShipPosition->length);
-
 	scanf_s(" %c", &col);
-	newShipPosition->headLocation.col = castColAsInt(col);
-	scanf_s("%d", &newShipPosition->headLocation.row);
-	scanf_s(" %c", &tilt);
-	validTiltInput(newShipPosition, tilt);
-	newShipPosition->isVertical = castTiltAsIsVertical(tilt);
+
+	if (col == '-')
+		checkFlagsDuringPreparation(params);
+	else {
+		newShipPosition->headLocation.col = castColAsInt(col);
+		scanf_s("%d", &newShipPosition->headLocation.row);
+		scanf_s(" %c", &tilt);
+		validTiltInput(newShipPosition, tilt);
+		newShipPosition->isVertical = castTiltAsIsVertical(tilt);
+	}
 
 	clearBuffer();
+}
+
+void checkFlagsDuringPreparation(Parameters* params) {
+	char flag = getchar();
+	if (isHelpFlag(flag)) {
+		printHelpWithShipSetting();
+		pause();
+	}
+	if (isExitFlag(flag))
+		setExitParam(params);
 }
 
 void validTiltInput(ShipPosition* shipPosition, int tilt) {

@@ -14,7 +14,7 @@ void initializeLocation(Location* location);
 
 void getNewLocation(Location* newLocation, Parameters* params);
 
-void checkFlags(Parameters* params);
+void checkFlagsDuringGame(Parameters* params);
 
 int castColAsInt(int col);
 

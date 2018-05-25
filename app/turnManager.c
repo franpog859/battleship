@@ -7,9 +7,7 @@
 void doTheTurn(GameBoard* gameBoard) {
 	Location moveLocation;
 	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
-	clearTerminal();
-	printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
-
+	
 	getMove(gameBoard, &moveLocation);
 	if (isExitParam(gameBoard->params))
 		return;
@@ -30,9 +28,13 @@ int getOponent(GameBoard* gameBoard) {
 
 void getMove(GameBoard* gameBoard, Location* moveLocation) {
 	do {
+		clearTerminal();
+		printBoard(gameBoard->oponentBoard, gameBoard->activePlayer);
+
 		initializeLocation(moveLocation);
 		getNewLocation(moveLocation, gameBoard->params);
-	} while (!isLocationValid(gameBoard->oponentBoard, gameBoard->activePlayer, moveLocation) && !isExitParam(gameBoard->params));
+	} while (!isLocationValid(gameBoard->oponentBoard, gameBoard->activePlayer, moveLocation) && 
+		!isExitParam(gameBoard->params));
 }
 
 void setMove(GameBoard* gameBoard, Location* location) {

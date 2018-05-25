@@ -6,6 +6,10 @@ void printHelpWithParams() {
 	printf("help with params");
 }
 
+void printHelpWithShipSetting() {
+	printf("help with ship setting");
+}
+
 void printHelpWithMove() {
 	printf("help with move");
 }

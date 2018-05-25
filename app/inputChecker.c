@@ -13,14 +13,14 @@ void initializeLocation(Location* location) {
 void getNewLocation(Location* newLocation, Parameters* params) {
 	char col;
 
-	printf("\n		-h for help.");
-	printf("\n		-e to exit.");
-	printf("\n		-s to save and exit.");
+	printf("\n	-h for help.");
+	printf("\n	-e to exit.");
+	printf("\n	-s to save and exit.");
 	printf("\nType a location (e.g.: C8): ");
 	scanf_s(" %c", &col);
 
 	if (col == '-')
-		checkFlags(params);
+		checkFlagsDuringGame(params);
 	else {
 		scanf_s("%d", &newLocation->row);
 		newLocation->col = castColAsInt(col);
@@ -28,10 +28,12 @@ void getNewLocation(Location* newLocation, Parameters* params) {
 	clearBuffer();
 }
 
-void checkFlags(Parameters* params) {
+void checkFlagsDuringGame(Parameters* params) {
 	char flag = getchar();
-	if (isHelpFlag(flag))
+	if (isHelpFlag(flag)) {
 		printHelpWithMove();
+		pause();
+	}
 	if (isExitFlag(flag))
 		setExitParam(params);
 	if (isSaveFlag(flag)) {
