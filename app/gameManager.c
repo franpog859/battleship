@@ -2,6 +2,7 @@
 #include "parameters.h"
 #include "gameBoard.h"
 #include "utils.h"
+#include "save.h"
 #include "inputChecker.h"
 #include <stdbool.h>
 
@@ -16,15 +17,15 @@ void prepareAndPlay(Parameters* params) {
 
 	if (!isExitParam(params)) {
 		publicWinner(&gameBoard);
-		//TODO: saveHighScore(gameBoard);
+		//TODO: saveHighScore(&gameBoard);
 	}
 	else if (isSaveParam(params))
-		;//TODO: saveGame(gameBoard);
+		saveGame(&gameBoard);
 }
 
 void prepareGameBoard(GameBoard* gameBoard, Parameters* params) {
 	if (isGameLoaded(params))
-		;//TODO: loadGame(gameBoard, params);
+		loadGame(gameBoard, params);
 	else 
 		setStartingGameBoard(gameBoard, params);
 }

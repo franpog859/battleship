@@ -9,8 +9,10 @@ void doTheTurn(GameBoard* gameBoard) {
 	changeActivePlayer(gameBoard); //WARNING: It must be at the beginning of this function.
 	
 	getMove(gameBoard, &moveLocation);
-	if (isExitParam(gameBoard->params))
+	if (isExitParam(gameBoard->params)) {
+		changeActivePlayer(gameBoard); //It is important for saving part.
 		return;
+	}
 	setMove(gameBoard, &moveLocation);
 
 	clearTerminal();

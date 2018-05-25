@@ -19,9 +19,6 @@ void printHelpWithShipSetting() {
 	printf("\nThe first character indicates the column number for the ship prow (A - J or a - j)");
 	printf("\nThe second character indicates the row number for the ship prow (0 - 9)");
 	printf("\nThe third character indicates the tilt of your ship ((H or V) or (h or v))");
-	printf("\n");
-	printf("\n	-h	- to get help with ship setting");
-	printf("\n	-e	- to exit the game");
 }
 
 void printHelpWithMove() {
@@ -31,10 +28,6 @@ void printHelpWithMove() {
 	printf("\n");
 	printf("\nThe first character indicates the column number of your command (A - J or a - j)");
 	printf("\nThe second character indicates the row number of your command (0 - 9)");
-	printf("\n");
-	printf("\n	-h	- to get help with the move");
-	printf("\n	-e	- to exit the game");
-	printf("\n	-s	- to save and exit the game");
 }
 
 void clearTerminal() {

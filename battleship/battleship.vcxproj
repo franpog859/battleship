@@ -24,6 +24,7 @@
     <ClCompile Include="..\app\inputChecker.c" />
     <ClCompile Include="..\app\main.c" />
     <ClCompile Include="..\app\parameters.c" />
+    <ClCompile Include="..\app\save.c" />
     <ClCompile Include="..\app\shipSetter.c" />
     <ClCompile Include="..\app\startingBoardSetter.c" />
     <ClCompile Include="..\app\turnManager.c" />
@@ -34,6 +35,7 @@
     <ClInclude Include="..\app\gameManager.h" />
     <ClInclude Include="..\app\inputChecker.h" />
     <ClInclude Include="..\app\parameters.h" />
+    <ClInclude Include="..\app\save.h" />
     <ClInclude Include="..\app\shipSetter.h" />
     <ClInclude Include="..\app\startingBoardSetter.h" />
     <ClInclude Include="..\app\turnManager.h" />
