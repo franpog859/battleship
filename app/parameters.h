@@ -5,7 +5,7 @@
 
 typedef struct Parameters {
 	bool load;
-	bool si;
+	bool highScores;
 	bool help;
 	bool exit;
 	bool save;
@@ -16,6 +16,8 @@ void getParameters(int argNumber, char ** arguments, Parameters* params);
 void initializeParameters(Parameters* params);
 
 bool areParametersOk(Parameters* params);
+
+bool isHighScoresParam(Parameters* params);
 
 bool isGameLoaded(Parameters* params);
 
