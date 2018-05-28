@@ -74,7 +74,7 @@ void getNewRecord(Record *newRecord, int score) {
 int recordCompare(const void * _a, const void * _b) {
 	Record *a = (Record*)_a;
 	Record *b = (Record*)_b;
-	return (a->score - b->score);
+	return (b->score - a->score);
 }
 
 bool rewriteScores(Record records[]) {

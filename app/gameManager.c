@@ -20,8 +20,6 @@ void prepareAndPlay(Parameters* params) {
 		score = countPoints(&gameBoard);
 		publicWinner(&gameBoard, score);
 		saveHighScore(score);
-		clearTerminal();
-		printHighScores();
 	}
 	else if (isSaveParam(params))
 		saveGame(&gameBoard);

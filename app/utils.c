@@ -29,6 +29,11 @@ void printHelpWithMove() {
 	printf("\n");
 	printf("\nThe first character indicates the column number of your command (A - J or a - j)");
 	printf("\nThe second character indicates the row number of your command (0 - 9)");
+	printf("\n");
+	printf("\n	\'	- you do not know yet what it is");
+	printf("\n	~	- water");
+	printf("\n	#	- a ship or it\'s part");
+	printf("\n	X	- killed ship");
 }
 
 void clearTerminal() {
