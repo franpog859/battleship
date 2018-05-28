@@ -31,4 +31,4 @@ Use these flags:
 
 ## Here is how the game looks like
 
-![screenshot]((https://raw.githubusercontent.com/franpog859/battleship/master/doc/screenshot.png))
+![screenshot](https://raw.githubusercontent.com/franpog859/battleship/master/doc/screenshot.png)
