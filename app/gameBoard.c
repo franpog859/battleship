@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 void printBoard(char board[numberOfPlayers][boardSize][boardSize], int whichPlayer) {
-	printf("The board of %d. player:\n\n", whichPlayer);
+	printf("The board of %d. player:\n\n", whichPlayer + 1);
 	printf("   A B C D E F G H I J\n\n");
 	for (int i = 0; i < boardSize; i++) {
 		printf("%d  ", i);

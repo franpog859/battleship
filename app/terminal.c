@@ -50,7 +50,7 @@ void pause() {
 }
 
 void printWinner(int winner, int points) {
-	printf("\nThe winner is player %d!", winner);
+	printf("\nThe winner is player %d!", winner + 1);
 	printf("\nYou scored %d points!", points);
 }
 
