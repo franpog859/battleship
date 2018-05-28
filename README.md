@@ -29,6 +29,18 @@ Use these flags:
 - `-s` or `--highScores` to print high scores
 - none just to run the game
 
+## Points counting
+
+Here is how points are counted:
+```c
+int countPoints(GameBoard* gameBoard) {
+	const int MAX_NUMBER_OF_TURNS = boardSize * boardSize;
+	const int MIN_NUMBER_OF_TURNS = numberOfShips;
+	
+	return MAX_NUMBER_OF_TURNS + MIN_NUMBER_OF_TURNS - gameBoard->numberOfTurns;
+}
+```
+
 ## Here is how the game looks like
 
 ![screenshot](https://raw.githubusercontent.com/franpog859/battleship/master/doc/screenshot.png)
