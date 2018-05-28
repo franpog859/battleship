@@ -1,5 +1,5 @@
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
+#ifndef GAME_H
+#define GAME_H
 
 #include "parameters.h"
 #include "gameBoard.h"

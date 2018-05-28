@@ -1,5 +1,5 @@
-#ifndef TURNMANAGER_H
-#define TURNMANAGER_H
+#ifndef TURN_H
+#define TURN_H
 
 #include "gameBoard.h"
 #include "inputChecker.h"

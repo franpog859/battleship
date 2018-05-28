@@ -2,7 +2,7 @@
 #include "gameBoard.h"
 #include "inputChecker.h"
 #include "shipSetter.h"
-#include "utils.h"
+#include "terminal.h"
 #include <stdio.h>
 
 void setStartingGameBoard(GameBoard* gameBoard, Parameters* params) {

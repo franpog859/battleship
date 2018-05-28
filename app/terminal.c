@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "terminal.h"
 #include <stdio.h>
 #include <time.h>
 

@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef TERMINAL_H
+#define TERMINAL_H
 
 void printHelpWithParams();
 

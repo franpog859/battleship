@@ -1,6 +1,6 @@
 #include "save.h"
 #include "gameBoard.h"
-#include "utils.h"
+#include "terminal.h"
 #include "parameters.h"
 #include <stdlib.h>
 #include <stdbool.h>

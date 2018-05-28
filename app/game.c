@@ -1,9 +1,10 @@
-#include "gameManager.h"
+#include "game.h"
 #include "parameters.h"
 #include "gameBoard.h"
-#include "utils.h"
+#include "terminal.h"
 #include "save.h"
 #include "inputChecker.h"
+#include "turn.h"
 #include <stdbool.h>
 
 void prepareAndPlay(Parameters* params) {

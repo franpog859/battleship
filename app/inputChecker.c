@@ -1,6 +1,6 @@
 #include "inputChecker.h"
 #include "gameBoard.h"
-#include "utils.h"
+#include "terminal.h"
 #include "parameters.h"
 #include <stdbool.h>
 #include <stdio.h>

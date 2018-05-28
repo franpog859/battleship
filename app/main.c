@@ -1,7 +1,7 @@
 #include "parameters.h"
-#include "utils.h"
+#include "terminal.h"
 #include "save.h"
-#include "gameManager.h"
+#include "game.h"
 
 #include <stdlib.h> 
 #include <crtdbg.h> 

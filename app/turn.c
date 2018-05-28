@@ -1,6 +1,6 @@
-#include "turnManager.h"
+#include "turn.h"
 #include "gameBoard.h"
-#include "utils.h"
+#include "terminal.h"
 #include "inputChecker.h"
 #include <stdbool.h>
 

@@ -1,7 +1,7 @@
 #include "shipSetter.h"
 #include "inputChecker.h"
 #include "parameters.h"
-#include "utils.h"
+#include "terminal.h"
 #include <stdio.h>
 #include <stdbool.h>
 
