@@ -28,6 +28,8 @@ bool checkForProbeLocation(GameBoard* gameBoard, bool isEntirelyKilledTemp,
 
 bool isThereShip(GameBoard* gameBoard, Location* location);
 
+bool isLocationOnBoard(Location* location);
+
 bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation);
 
 void killEntireShip(GameBoard* gameBoard, Location* location);

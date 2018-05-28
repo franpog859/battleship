@@ -15,7 +15,6 @@ bool loadGame(GameBoard* gameBoard, Parameters* params) {
 
 	size_t itemsRead = fread(gameBoard, sizeof(GameBoard), 1, save);
 	if (itemsRead * sizeof(*gameBoard) != sizeof(GameBoard)) return false;
-	
 	gameBoard->params = params;
 
 	fclose(save);
@@ -47,6 +46,7 @@ bool readScores(Record records[]) {
 	FILE *scoresFile;
 	fopen_s(&scoresFile, "../dat/highScores.save", "rb");
 	if (scoresFile == NULL) return false;
+
 	for (int i = 0; !feof(scoresFile) && i < RECORDS_NUMBER; i++) {
 		fread(&records[i], sizeof(Record), 1, scoresFile);
 	}
@@ -67,7 +67,6 @@ void getNewRecord(Record *newRecord, int score) {
 	if ((strlen(newRecord->name) > 0) &&
 		(newRecord->name[strlen(newRecord->name) - 1] == '\n'))
 		newRecord->name[strlen(newRecord->name) - 1] = '\0';
-
 	newRecord->score = score;
 }
 
@@ -81,6 +80,7 @@ bool rewriteScores(Record records[]) {
 	FILE *scoresFile;
 	fopen_s(&scoresFile, "../dat/highScores.save", "wb");
 	if (scoresFile == NULL) return false;
+
 	for (int i = 0; i < RECORDS_NUMBER; i++) {
 		fwrite(&records[i], sizeof(Record), 1, scoresFile);
 	}
@@ -91,7 +91,6 @@ bool rewriteScores(Record records[]) {
 void printHighScores() {
 	FILE *scoresFile;
 	Record buffer;
-
 	fopen_s(&scoresFile, "../dat/highScores.save", "rb");
 	if (scoresFile == NULL) return false;
 

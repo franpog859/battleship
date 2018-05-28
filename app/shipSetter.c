@@ -69,31 +69,21 @@ bool isShipPositionValid(char board[2][10][10], int whichPlayer, ShipPosition* s
 	Location testLocation;
 	initializeLocation(&testLocation);
 
-	if (shipPosition->isVertical) {
-		for (int i = 0; i < shipPosition->length; i++) {
-			testLocation.col = shipPosition->headLocation.col;
-			testLocation.row = shipPosition->headLocation.row + i;
-			if (!isLocationValid(board, whichPlayer, &testLocation)) return false;
-		}
-		for (int i = -1; i < shipPosition->length + 1; i++) for (int j = -1; j < 2; j++) {
-			testLocation.col = shipPosition->headLocation.col + j;
-			testLocation.row = shipPosition->headLocation.row + i;
-			if (isLocationOccupied(board, whichPlayer, &testLocation)) return false;
-		}
+	for (int length = 0; length < shipPosition->length; length++) {
+		getTestLocation(&testLocation, shipPosition, length, 0);
+		if (!isLocationValid(board, whichPlayer, &testLocation)) return false;
 	}
-	else {
-		for (int i = 0; i < shipPosition->length; i++) {
-			testLocation.col = shipPosition->headLocation.col + i;
-			testLocation.row = shipPosition->headLocation.row;
-			if (!isLocationValid(board, whichPlayer, &testLocation)) return false;
-		}
-		for (int i = -1; i < shipPosition->length + 1; i++) for (int j = -1; j < 2; j++) {
-			testLocation.col = shipPosition->headLocation.col + i;
-			testLocation.row = shipPosition->headLocation.row + j;
+	for (int length = -1; length < shipPosition->length + 1; length++) 
+		for (int width = -1; width < 2; width++) {
+			getTestLocation(&testLocation, shipPosition, length, width);
 			if (isLocationOccupied(board, whichPlayer, &testLocation)) return false;
-		}
-	}
+		}	
 	return true; 
+}
+
+void getTestLocation(Location* testLocation, ShipPosition* shipPosition, int lenght, int width) {
+	testLocation->col = shipPosition->headLocation.col + ((shipPosition->isVertical) ? width : lenght);
+	testLocation->row = shipPosition->headLocation.row + ((shipPosition->isVertical) ? lenght : width);
 }
 
 bool isLocationOccupied(char board[2][10][10], int whichPlayer, Location* testLocation) {

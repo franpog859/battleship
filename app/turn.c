@@ -102,21 +102,24 @@ bool checkForProbeLocation(GameBoard* gameBoard, bool isEntirelyKilledTemp,
 
 bool isThereShip(GameBoard* gameBoard, Location* location) {
 	int oponent = getOponent(gameBoard);
+	if (isLocationOnBoard(location) &&
+		gameBoard->ownBoard[oponent][location->row][location->col] == OWN_SHIP)
+		return true;
+	return false;
+}
+
+bool isLocationOnBoard(Location* location) {
 	if (location->col >= 0 &&
 		location->col <= 9 &&
 		location->row >= 0 &&
-		location->row <= 9 &&
-		gameBoard->ownBoard[oponent][location->row][location->col] == OWN_SHIP)
+		location->row <= 9)
 		return true;
 	return false;
 }
 
 bool isLocationKilled(GameBoard* gameBoard, Location* probeLocation) {
 	int oponent = getOponent(gameBoard);
-	if (probeLocation->col >= 0 &&
-		probeLocation->col <= 9 &&
-		probeLocation->row >= 0 &&
-		probeLocation->row <= 9 &&
+	if (isLocationOnBoard(probeLocation) &&
 		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == EMPTY &&
 		gameBoard->ownBoard[oponent][probeLocation->row][probeLocation->col] == OWN_SHIP)
 		return false;
@@ -145,10 +148,7 @@ void killEntireShip(GameBoard* gameBoard, Location* location) {
 }
 
 bool isNotKilledShip(GameBoard* gameBoard, Location* probeLocation) {
-	if (probeLocation->col >= 0 &&
-		probeLocation->col <= 9 &&
-		probeLocation->row >= 0 &&
-		probeLocation->row <= 9 &&
+	if (isLocationOnBoard(probeLocation) &&
 		gameBoard->oponentBoard[gameBoard->activePlayer][probeLocation->row][probeLocation->col] == NOT_KILLED_SHIP)
 		return true;
 	return false;
