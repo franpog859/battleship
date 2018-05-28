@@ -5,10 +5,10 @@
 #include "parameters.h"
 #include <stdbool.h>
 
-#define MAX_RECORDS_NUMBER 50
+#define RECORDS_NUMBER 20
 
 typedef struct Record {
-	char *name;
+	char name[30];
 	int score;
 } Record;
 
@@ -18,9 +18,17 @@ void saveGame(GameBoard* gameBoard);
 
 void saveHighScore(int score);
 
+bool readScores(Record records[]);
+
+void addNewRecord(Record records[], int score);
+
+int recordCompare(const void * _a, const void * _b);
+
 void getNewRecord(Record *newRecord, int score);
 
 int recordCompare(const void * _a, const void * _b);
+
+bool rewriteScores(Record records[]);
 
 void printHighScores();
 

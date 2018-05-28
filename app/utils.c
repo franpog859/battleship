@@ -6,8 +6,9 @@ void printHelpWithParams() {
 	printf("\nUse these flags to run the battleship CLI game:");
 	printf("\n	-h	--help			- to get help with flags");
 	printf("\n	-l	--load			- to to load previously saved game");
-	printf("\n	-s	--highScores	- to print high scores");
+	printf("\n	-s	--highScores		- to print high scores");
 	printf("\n	none				- to run the game");
+	pause();
 }
 
 void printHelpWithShipSetting() {
