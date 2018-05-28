@@ -3,6 +3,10 @@
 #include "save.h"
 #include "gameManager.h"
 
+#include <stdlib.h> 
+#include <crtdbg.h> 
+#define _CRTDBG_MAP_ALLOC 
+
 int main(int argNumber, char ** arguments) {
 	Parameters params;
 	getParameters(argNumber, arguments, &params);
@@ -15,5 +19,7 @@ int main(int argNumber, char ** arguments) {
 	}
 	else
 		printHelpWithParams();
+	
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
