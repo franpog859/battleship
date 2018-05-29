@@ -25,7 +25,7 @@ X	- killed ship
 
 Use these flags:
 - `-h` or `--help` to get help with flags
-- `-l` or `--load` to to load previously saved game
+- `-l` or `--load` to load previously saved game
 - `-s` or `--highScores` to print high scores
 - none just to run the game
 
